@@ -1,5 +1,3 @@
-#!/usr/bin/ruby
-
 require 'json'
 require 'net/ssh'
 require "thread"
@@ -22,11 +20,11 @@ agents_payload.each do |agent|
                 puts "Restarting #{agent["agent_name"]} agent: output -> #{data.inspect}"
               end
             else
-              puts "FAILED"
+              puts "FAILED to restart agent: #{agent["agent_name"]}"
             end
           end
 
-          puts "about to wait"
+          puts "waiting..."
           channel.wait
           puts "JOB DONE! SUCCESS!!!"
 
